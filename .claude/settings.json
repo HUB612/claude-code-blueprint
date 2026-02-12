@@ -1,0 +1,81 @@
+{
+  "project": {
+    "name": "[Nom du Projet]",
+    "description": "[Description courte du projet]"
+  },
+  "agents": {
+    "orchestrator": {
+      "instructions": ".claude/agents/orchestrator.md",
+      "isLeader": true
+    },
+    "backend": {
+      "instructions": ".claude/agents/backend.md",
+      "labels": ["type:backend"],
+      "canAssign": ["domain:api", "domain:core", "domain:auth"]
+    },
+    "frontend": {
+      "instructions": ".claude/agents/frontend.md",
+      "labels": ["type:frontend"],
+      "canAssign": ["domain:ui", "domain:core"]
+    },
+    "qa": {
+      "instructions": ".claude/agents/qa.md",
+      "labels": ["type:qa"],
+      "canAssign": ["domain:tests", "domain:ci"]
+    },
+    "docs": {
+      "instructions": ".claude/agents/docs.md",
+      "labels": ["type:docs"],
+      "canAssign": ["domain:docs", "domain:api"]
+    },
+    "security": {
+      "instructions": ".claude/agents/security.md",
+      "labels": ["type:security"],
+      "canAssign": ["domain:auth", "domain:api", "domain:core"]
+    },
+    "devops": {
+      "instructions": ".claude/agents/devops.md",
+      "labels": ["type:devops"],
+      "canAssign": ["domain:infra", "domain:ci"]
+    },
+    "database": {
+      "instructions": ".claude/agents/database.md",
+      "labels": ["type:database"],
+      "canAssign": ["domain:db", "domain:core"]
+    },
+    "api-design": {
+      "instructions": ".claude/agents/api-design.md",
+      "labels": ["type:api"],
+      "canAssign": ["domain:api"]
+    },
+    "refactoring": {
+      "instructions": ".claude/agents/refactoring.md",
+      "labels": ["type:refactor"],
+      "canAssign": ["domain:core", "domain:api", "domain:ui"]
+    }
+  },
+  "workflow": {
+    "branchPrefix": "feature/",
+    "useWorktree": false,
+    "requireTests": true,
+    "coverageThreshold": 80,
+    "requireHumanReview": true
+  },
+  "commit": {
+    "conventionalCommits": true,
+    "types": ["feat", "fix", "docs", "style", "refactor", "test", "chore", "perf"],
+    "scopes": ["core", "api", "ui", "auth", "db", "tests", "ci", "docs"]
+  },
+  "pr": {
+    "titleFormat": "[#{issue}] {type}({scope}): {description}",
+    "requireLinkedIssue": false,
+    "template": ".github/PULL_REQUEST_TEMPLATE.md"
+  },
+  "commands": {
+    "review": ".claude/commands/review.md",
+    "security-audit": ".claude/commands/security-audit.md",
+    "optimize": ".claude/commands/optimize.md",
+    "document": ".claude/commands/document.md",
+    "test-gen": ".claude/commands/test-gen.md"
+  }
+}
